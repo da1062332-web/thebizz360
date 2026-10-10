@@ -1,0 +1,307 @@
+.work {
+  position: relative;
+  background: var(--plum);
+  color: #efe9f7;
+  padding: var(--section) 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: clamp(40px, 6vw, 88px);
+  align-items: center;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 22px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.tagDot {
+  width: 10px;
+  height: 10px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-variation-settings: "opsz" 144;
+  font-size: clamp(2.3rem, 4.8vw, 3.9rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.lede {
+  margin: 22px 0 34px;
+  max-width: 48ch;
+  font-size: 1.1rem;
+  color: #cfc4df;
+}
+
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 32px;
+  margin: 0 0 38px;
+}
+.benefits div {
+  position: relative;
+  padding-top: 14px;
+}
+.rule {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: rgba(233, 185, 73, 0.4);
+}
+.benefits dt {
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.benefits dd {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #b9add0;
+}
+
+/* ---- visual ---- */
+.visual {
+  position: relative;
+  padding-bottom: 48px;
+}
+.photo {
+  position: relative;
+  margin: 0;
+  width: 86%;
+  border: 1px solid var(--gold);
+  padding: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.photo img {
+  width: 100%;
+  aspect-ratio: 4 / 4.4;
+  object-fit: cover;
+  border-radius: 2px;
+  filter: saturate(0.85);
+}
+.phone {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: min(240px, 44%);
+  margin: 0;
+  border-color: var(--plum-deep);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(233, 185, 73, 0.5);
+}
+
+/* ---- lobby directory board ---- */
+.board {
+  position: relative;
+  margin-top: clamp(64px, 8vw, 104px);
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  background: var(--plum-deep);
+  border-radius: 6px;
+}
+.boardFrame {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(233, 185, 73, 0.5);
+  border-radius: 6px;
+  pointer-events: none;
+}
+.boardHead {
+  padding: clamp(28px, 4vw, 48px);
+  border-right: 1px solid rgba(233, 185, 73, 0.3);
+}
+.quote {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+  line-height: 1.12;
+  color: var(--gold);
+}
+.boardNote {
+  margin: 24px 0 0;
+  font-size: 0.95rem;
+  color: #b9add0;
+  max-width: 44ch;
+}
+.boardBody {
+  padding: clamp(28px, 4vw, 48px);
+}
+.boardLabel {
+  margin: 0 0 14px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #9d8fb5;
+}
+.rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.rows li {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.rowName {
+  font-weight: 700;
+  color: #fff;
+}
+.leader {
+  flex: 1;
+  min-width: 16px;
+  border-bottom: 1px dotted rgba(233, 185, 73, 0.5);
+  transform: translateY(-4px);
+}
+.rowKind {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: right;
+}
+
+@media (max-width: 900px) {
+  .grid,
+  .board {
+    grid-template-columns: 1fr;
+  }
+  .boardHead {
+    border-right: 0;
+    border-bottom: 1px solid rgba(233, 185, 73, 0.3);
+  }
+}
+
+@media (max-width: 520px) {
+  .benefits {
+    grid-template-columns: 1fr;
+  }
+  .rows li {
+    flex-wrap: wrap;
+    gap: 2px 12px;
+  }
+  .leader {
+    display: none;
+  }
+  .rowName {
+    flex-basis: 100%;
+  }
+  .rowKind {
+    text-align: left;
+  }
+  .phone {
+    border-width: 5px;
+    border-radius: 22px;
+  }
+}
+
+/* =================== motion layer =================== */
+
+/* Food -> Work handover. The ink backdrop matches the Food strip above, so the
+   plum panel reads as a panel opening up to full bleed. Content is never clipped:
+   the inset is always smaller than the page gutter. */
+.stage {
+  background: var(--ink);
+}
+:global(.js-motion) .work {
+  clip-path: inset(
+    0 calc((1 - var(--p, 1)) * min(3vw, 14px + 1vw)) 0 calc((1 - var(--p, 1)) * min(3vw, 14px + 1vw))
+      round calc((1 - var(--p, 1)) * 28px) calc((1 - var(--p, 1)) * 28px) 0 0
+  );
+}
+/* The gold line travels across the boundary as the section arrives */
+.goldLine {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 3px;
+  background: var(--gold);
+  transform-origin: left center;
+  transform: scaleX(var(--p, 1));
+}
+
+/* Layered depth: phone and photo move at slightly different speeds */
+.phone {
+  transform: translateY(calc((var(--p, 0.5) - 0.5) * -60px));
+}
+.photo {
+  transform: translateY(calc((var(--p, 0.5) - 0.5) * 16px));
+}
+
+/* Fine gold line drawn along the photo edge */
+.edge {
+  position: absolute;
+  left: -16px;
+  top: -12px;
+  height: 62%;
+  width: 1px;
+  background: var(--gold);
+}
+
+/* Microinteractions — composed, no bounce */
+.photo img {
+  transition: transform 420ms var(--ease-edit);
+}
+.photo:hover img {
+  transform: scale(1.03);
+}
+.photo:hover {
+  border-color: var(--gold-soft);
+}
+.phone:hover {
+  box-shadow: 0 40px 70px -20px rgba(0, 0, 0, 0.8), 0 0 0 1px var(--gold);
+}
+.rows li {
+  transition: background-color var(--dur-ui) var(--ease-out);
+}
+.rows li:hover .rowName {
+  color: var(--gold-soft);
+}
+.rowName {
+  transition: color var(--dur-ui) var(--ease-out);
+}
+
+@media (max-width: 900px) {
+  .phone,
+  .photo {
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .phone,
+  .photo {
+    transform: none;
+  }
+  .goldLine {
+    transform: none;
+  }
+}

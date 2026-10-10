@@ -1,0 +1,73 @@
+.section {
+  background: var(--paper-2);
+  padding: var(--section) 0;
+  border-block: 1px solid var(--line);
+}
+
+.head {
+  display: grid;
+  gap: 16px;
+  max-width: 680px;
+}
+.title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.9rem, 3.8vw, 3rem);
+  letter-spacing: -0.03em;
+}
+
+.steps {
+  list-style: none;
+  margin: clamp(40px, 5vw, 64px) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 4vw, 56px);
+  counter-reset: none;
+}
+.steps li {
+  position: relative;
+  padding-top: 28px;
+}
+.rule {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--ink);
+}
+.steps li:nth-child(1) .rule {
+  background: var(--orange);
+}
+.steps li:nth-child(3) .rule {
+  background: var(--violet);
+}
+.num {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3.4rem, 6vw, 5rem);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--ink);
+  margin-bottom: 18px;
+}
+.steps h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.steps p {
+  margin: 0 0 14px;
+  color: var(--ink-2);
+}
+
+@media (max-width: 760px) {
+  .steps {
+    grid-template-columns: 1fr;
+  }
+  .num {
+    font-size: 3rem;
+  }
+}

@@ -1,0 +1,57 @@
+.section {
+  padding: var(--section) 0;
+  background:
+    linear-gradient(90deg, var(--orange) 0 50%, var(--violet) 50% 100%) top / 100% 6px no-repeat,
+    var(--paper);
+}
+
+.inner {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.mark {
+  display: inline-grid;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 6vw, 4.8rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  max-width: 15ch;
+}
+.title span {
+  display: block;
+  margin-top: 0.12em;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--violet);
+}
+
+.lede {
+  margin: 26px 0 0;
+  max-width: 52ch;
+  color: var(--ink-2);
+  font-size: 1.12rem;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 36px;
+}
+
+@media (max-width: 480px) {
+  .ctas :global(.btn) {
+    width: 100%;
+  }
+}

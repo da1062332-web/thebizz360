@@ -1,0 +1,183 @@
+.section {
+  padding: var(--section) 0;
+}
+
+.head {
+  text-align: center;
+  display: grid;
+  justify-items: center;
+}
+.title {
+  margin-top: 18px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 4.6vw, 3.6rem);
+  letter-spacing: -0.035em;
+  max-width: 16ch;
+}
+.lede {
+  margin: 22px 0 0;
+  max-width: 58ch;
+  color: var(--ink-2);
+  font-size: 1.1rem;
+}
+
+.split {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: clamp(48px, 6vw, 72px);
+}
+
+.food,
+.work {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+}
+.food {
+  background: var(--orange);
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+}
+.work {
+  background: var(--plum);
+  color: #efe9f7;
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+}
+.photo {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.media {
+  overflow: hidden;
+}
+.food .media {
+  border-bottom: 3px solid var(--ink);
+}
+.work .media {
+  border-bottom: 2px solid var(--gold);
+}
+.work .photo {
+  filter: saturate(0.8);
+}
+
+.body {
+  padding: clamp(24px, 3.4vw, 44px);
+  padding-top: 56px;
+}
+.body h3 {
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  margin: 6px 0 12px;
+}
+.body p {
+  margin: 0;
+}
+.food h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+.work h3 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  color: #fff;
+}
+.work .body p:not(.label) {
+  color: #cfc4df;
+}
+.label {
+  font-family: var(--font-display);
+  font-size: 0.75rem !important;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.work .label {
+  color: var(--gold);
+}
+
+/* The app's Food | Work toggle sits on the seam between both halves */
+.switch {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  /* % margin resolves against width: each photo is half the width at 16:9 */
+  margin-top: 28.125%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: flex;
+  padding: 5px;
+  gap: 4px;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  box-shadow: 0 10px 24px -10px rgba(23, 18, 31, 0.5);
+}
+.knobFood,
+.knobWork {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 8px 16px;
+  border-radius: 999px;
+}
+.knobFood {
+  background: var(--orange);
+  color: var(--ink);
+}
+.knobWork {
+  background: var(--violet);
+  color: #fff;
+}
+
+.note {
+  margin-top: 22px;
+  text-align: center;
+  color: var(--ink-3);
+  font-size: 0.92rem;
+}
+
+@media (max-width: 800px) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+  .food {
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+  .work {
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  }
+  .switch {
+    position: relative;
+    left: auto;
+    transform: none;
+    margin: -22px auto;
+    justify-self: center;
+  }
+}
+
+/* =================== motion layer =================== */
+.food,
+.work {
+  will-change: auto;
+}
+.food:hover,
+.work:hover {
+  transform: translateY(-4px);
+}
+.food:hover {
+  box-shadow: 6px 8px 0 var(--ink);
+}
+.work:hover {
+  box-shadow: 0 18px 40px -18px rgba(30, 11, 56, 0.6);
+}
+.food:hover .photo,
+.work:hover .photo {
+  transform: scale(1.04);
+}
+.photo {
+  transition: transform 520ms var(--ease-edit);
+}

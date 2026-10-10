@@ -1,0 +1,127 @@
+.panel {
+  display: grid;
+  gap: 28px;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 20px;
+}
+.wide {
+  grid-column: 1 / -1;
+}
+.field {
+  display: grid;
+  gap: 7px;
+}
+.field label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+}
+.field label span {
+  font-weight: 500;
+  color: #a69cb2;
+}
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 11px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font: inherit;
+  font-size: 1rem;
+}
+.field select option {
+  color: var(--ink);
+}
+.field textarea {
+  resize: vertical;
+}
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 1px;
+  border-color: var(--gold);
+}
+.field input:user-invalid {
+  border-color: #ff8a7a;
+}
+
+.privacy {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #b9add0;
+}
+.privacy a {
+  color: var(--gold);
+}
+
+.alt {
+  display: grid;
+  gap: 12px;
+}
+.altLabel {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #a69cb2;
+}
+.altLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.placeholder {
+  padding: 24px;
+  border: 2px dashed var(--gold);
+  border-radius: var(--radius);
+  color: #e7e1ee;
+}
+.placeholder p {
+  margin: 0;
+}
+.phTitle {
+  font-weight: 800;
+  color: var(--gold);
+  margin-bottom: 8px !important;
+}
+.placeholder code {
+  font-size: 0.85em;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1px 5px;
+  border-radius: 4px;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+  .form {
+    grid-template-columns: 1fr;
+  }
+  .form :global(.btn),
+  .altLinks :global(.btn) {
+    width: 100%;
+  }
+}
+
+.submitRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+}
+.submitRow p {
+  font-size: 0.95rem;
+  color: #fff;
+}
+.submitRow button:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}

@@ -1,0 +1,220 @@
+.hero {
+  padding: clamp(40px, 7vw, 88px) 0 clamp(64px, 8vw, 112px);
+  border-bottom: 1px solid var(--line);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+
+.title {
+  display: grid;
+  gap: 22px;
+}
+.kicker {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+.headline {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 9.6vw, 3.4rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+.more {
+  color: var(--orange-text);
+}
+.connected {
+  color: var(--violet);
+}
+
+.lede {
+  margin: 26px 0 0;
+  max-width: 50ch;
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  color: var(--ink-2);
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.partner {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+.partner span {
+  font-weight: 500;
+  color: var(--ink-3);
+}
+.partner:hover {
+  color: var(--violet);
+}
+.partner svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ---- Product stage ---- */
+.stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 40px 0 0;
+  min-height: 560px;
+}
+.slabFood,
+.slabWork {
+  position: absolute;
+  top: 0;
+  bottom: 70px;
+  width: 50%;
+  display: flex;
+  align-items: flex-start;
+  padding: 14px 16px;
+}
+.slabFood {
+  left: 0;
+  background: var(--orange);
+  background-image: radial-gradient(rgba(23, 18, 31, 0.16) 1.2px, transparent 1.4px);
+  background-size: 11px 11px;
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+}
+.slabWork {
+  right: 0;
+  background: var(--plum);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  justify-content: flex-end;
+  box-shadow: inset 0 3px 0 var(--gold);
+}
+.slabLabel {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+.slabFood .slabLabel {
+  background: var(--cream);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+}
+.slabWork .slabLabel {
+  color: var(--gold);
+  border: 1px solid var(--gold);
+}
+
+.phoneFood,
+.phoneWork {
+  position: relative;
+  margin: 0;
+  width: min(270px, 88%);
+  z-index: 1;
+  align-self: start;
+}
+.phoneFood {
+  justify-self: end;
+  margin-right: -14px;
+  margin-top: 54px;
+  z-index: 2;
+}
+.phoneWork {
+  justify-self: start;
+  margin-left: -14px;
+}
+
+/* Restrained depth: the two phones drift at different speeds while scrolling away. */
+.phoneFood {
+  transform: translateY(calc((var(--p, 0.45) - 0.45) * -90px));
+}
+.phoneWork {
+  transform: translateY(calc((var(--p, 0.45) - 0.45) * -36px));
+}
+.phoneFood:hover,
+.phoneWork:hover {
+  box-shadow: 0 40px 70px -28px rgba(23, 18, 31, 0.6);
+}
+
+.caption {
+  grid-column: 1 / -1;
+  margin: 18px 0 0;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+  text-align: center;
+}
+
+@media (min-width: 901px) {
+  .headline {
+    font-size: clamp(3rem, 5.6vw, 4.5rem);
+  }
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .phoneFood,
+  .phoneWork {
+    transform: none;
+  }
+  /* Keep the overlapping phones (and their slide-in) from adding page width */
+  .stage {
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+  .phoneWork {
+    --from-x: 28px;
+  }
+  .stage {
+    min-height: 0;
+    padding-top: 28px;
+  }
+  .phoneFood {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ctas .btn,
+  .ctas a {
+    width: 100%;
+  }
+  .phoneFood,
+  .phoneWork {
+    width: 92%;
+    border-width: 5px;
+    border-radius: 24px;
+  }
+  .phoneFood img,
+  .phoneWork img {
+    border-radius: 19px;
+  }
+  .slabFood,
+  .slabWork {
+    bottom: 56px;
+  }
+}

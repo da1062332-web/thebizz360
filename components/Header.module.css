@@ -1,0 +1,202 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  /* Solid background: backdrop-filter would trap the fixed mobile panel inside the header box. */
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 12px 28px;
+  height: var(--header-h);
+}
+
+.brand {
+  display: inline-flex;
+  text-decoration: none;
+  color: var(--ink);
+  margin-right: auto;
+}
+.signin + .signin {
+  margin-left: -16px;
+}
+
+.nav ul {
+  display: flex;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: var(--ink-2);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+.link:hover {
+  color: var(--ink);
+  background: var(--paper-2);
+}
+.link[data-tone="food"]::before,
+.link[data-tone="work"]::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: 2px;
+  background: var(--orange);
+}
+.link[data-tone="work"]::before {
+  background: var(--violet);
+}
+
+.mobile {
+  display: none;
+}
+
+.toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.panel {
+  position: fixed;
+  inset: var(--header-h) 0 0 0;
+  background: var(--paper);
+  padding: 24px 16px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  border-top: 1px solid var(--line);
+}
+.panel ul {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+}
+.panel li a {
+  display: block;
+  padding: 16px 4px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+
+@media (max-width: 900px) {
+  .bar .nav,
+  .bar .signin {
+    display: none;
+  }
+  .mobile {
+    display: block;
+  }
+}
+
+/* =================== motion layer =================== */
+/* Nav underline: grows from the left on hover/focus, stays for the active section */
+.link {
+  position: relative;
+}
+.link::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 3px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 260ms var(--ease-edit);
+}
+.link[data-tone="food"]::after {
+  background: var(--orange);
+}
+.link[data-tone="work"]::after {
+  background: var(--violet);
+}
+.link:hover::after,
+.link:focus-visible::after,
+.link[data-active]::after {
+  transform: scaleX(1);
+}
+.link[data-active] {
+  color: var(--ink);
+}
+.link:hover {
+  background: transparent;
+}
+
+/* Mobile panel: always in the DOM, slides and fades; hidden from AT when closed */
+.panel {
+  visibility: hidden;
+  opacity: 0;
+  clip-path: inset(0 0 100% 0);
+  transition:
+    opacity 220ms var(--ease-out),
+    clip-path 360ms var(--ease-edit),
+    visibility 0s linear 360ms;
+}
+.panel[data-open] {
+  visibility: visible;
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+  transition:
+    opacity 200ms var(--ease-out),
+    clip-path 420ms var(--ease-edit),
+    visibility 0s;
+}
+.panel li,
+.panelCtas {
+  opacity: 0;
+  translate: 0 12px;
+  transition:
+    opacity 260ms var(--ease-out),
+    translate 360ms var(--ease-edit);
+}
+.panel[data-open] li,
+.panel[data-open] .panelCtas {
+  opacity: 1;
+  translate: 0 0;
+  transition-delay: calc(80ms + var(--i, 0) * 45ms);
+}
+.panelCtas {
+  display: grid;
+  gap: 12px;
+}
+.toggle svg {
+  transition: rotate 260ms var(--ease-edit);
+}
+.toggle[data-open] svg {
+  rotate: 90deg;
+}
+@media (prefers-reduced-motion: reduce) {
+  .panel li,
+  .panelCtas {
+    opacity: 1;
+    translate: none;
+  }
+}
