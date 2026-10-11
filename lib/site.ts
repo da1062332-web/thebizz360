@@ -6,7 +6,7 @@
 const clean = (v: string | undefined) => (v && v.trim() ? v.trim() : undefined);
 
 /** Production login of the existing application. Do not change without approval. */
-export const SIGN_IN_URL = "https://www.thebizz360.com/login";
+export const SIGN_IN_URL = "https://www.app.thebizz360.com/login";
 
 export const SITE_URL = (clean(process.env.NEXT_PUBLIC_SITE_URL) ?? "https://www.thebizz360.com").replace(
   /\/+$/,

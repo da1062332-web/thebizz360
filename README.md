@@ -1,7 +1,7 @@
 # thebizz360 marketing website
 
 Public marketing site for thebizz360, the food ordering and business discovery platform for commercial complexes.
-It is separate from the production application at https://www.thebizz360.com/login and does not touch its code,
+It is separate from the production application at https://www.app.thebizz360.com/login and does not touch its code,
 routes or authentication.
 
 ## Stack
@@ -37,7 +37,7 @@ Copy `.env.example` to `.env.local` (or set the variables in your host) and rebu
 | `NEXT_PUBLIC_ENQUIRY_EMAIL` | Partnership email, shown as a button and as "Contact" in the footer. |
 | `NEXT_PUBLIC_LEGAL_PUBLISHED` | `true` once real Privacy/Terms text exists. Until then those pages are `noindex`. |
 
-The sign-in URL is fixed in `lib/site.ts` as `https://www.thebizz360.com/login`.
+The sign-in URL is fixed in `lib/site.ts` as `https://www.app.thebizz360.com/login`.
 
 ## Structure
 
